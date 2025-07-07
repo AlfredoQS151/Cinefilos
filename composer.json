@@ -1,0 +1,13 @@
+{
+    "name": "cinefilos/webapp",
+    "description": "Sistema de gestión de cine - Cinefilos",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-pgsql": "*"
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:$PORT -t ."
+    }
+}

@@ -1,0 +1,297 @@
+/* Estilos para la página de alimentos */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.body-alimentos {
+    background-color: #1a1a1a;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+}
+
+.alimentos-header {
+    background-color: #1a1a1a;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.page-title {
+    color: #eaf822;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.btn-agregar {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background-color: #eaf822;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-agregar:hover {
+    background-color: #f50c18;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(234, 248, 34, 0.3);
+}
+
+.alimentos-container {
+    padding: 0 20px;
+}
+
+.sin-alimentos {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #222;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.sin-alimentos h3 {
+    color: #eaf822;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.sin-alimentos p {
+    color: #cccccc;
+    font-size: 1.1rem;
+}
+
+.categoria-section {
+    margin-bottom: 40px;
+}
+
+.categoria-title {
+    color: #eaf822;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eaf822;
+}
+
+.alimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.alimento-card {
+    background-color: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+}
+
+.alimento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border-color: #eaf822;
+}
+
+.alimento-imagen {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.alimento-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.alimento-card:hover .alimento-imagen img {
+    transform: scale(1.05);
+}
+
+.alimento-info {
+    padding: 20px;
+}
+
+.alimento-nombre {
+    color: #eaf822;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.alimento-descripcion {
+    color: #cccccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.alimento-precio {
+    color: #4cd137;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.alimento-categoria {
+    background-color: #333;
+    color: #eaf822;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.alimento-acciones {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.btn-editar {
+    background-color: #eaf822;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    flex: 1;
+}
+
+.btn-editar:hover {
+    background-color: #f50c18;
+    color: #ffffff;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    flex: 1;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para los modales */
+.modal-content {
+    background-color: #222;
+    border: 1px solid #333;
+    color: #ffffff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.modal-title {
+    color: #eaf822;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+.form-label {
+    color: #eaf822;
+    font-weight: 600;
+}
+
+.form-control, .form-select {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #ffffff;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #333;
+    border-color: #eaf822;
+    box-shadow: 0 0 0 0.2rem rgba(234, 248, 34, 0.25);
+    color: #ffffff;
+}
+
+.form-text {
+    color: #cccccc;
+}
+
+.modal-footer {
+    border-top: 1px solid #333;
+}
+
+.btn-primary {
+    background-color: #eaf822;
+    border-color: #eaf822;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #f50c18;
+    border-color: #000000;
+    color: #ffffff;
+}
+
+.btn-success {
+    background-color: #4cd137;
+    border-color: #4cd137;
+}
+
+.btn-success:hover {
+    background-color: #3ea82e;
+    border-color: #3ea82e;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .alimentos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .alimento-acciones {
+        flex-direction: column;
+    }
+    
+    .alimentos-header {
+        padding: 20px;
+    }
+}

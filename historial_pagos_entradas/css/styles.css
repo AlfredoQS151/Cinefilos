@@ -1,0 +1,255 @@
+/* Estilos para la página de historial de compras - Aislados completamente */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Reset completo para evitar interferencias */
+body.historial-container {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: bold !important;
+    min-height: 100vh !important;
+    padding: 20px 0 !important;
+    margin: 0 !important;
+}
+
+body.historial-container * {
+    box-sizing: border-box !important;
+}
+
+/* Header del historial */
+body.historial-container .historial-header {
+    padding: 40px !important;
+    text-align: center !important;
+    border-radius: 15px !important;
+    margin: 20px 0 !important;
+}
+
+body.historial-container .historial-title {
+    color: #eaf822 !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+}
+
+body.historial-container .historial-subtitle {
+    font-weight: bold !important;
+    color: #cccccc !important;
+    font-size: 1.2rem !important;
+}
+
+/* Navegación de pestañas */
+body.historial-container .nav-tabs {
+    background-color: #222 !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin-bottom: 30px !important;
+    border: none !important;
+}
+
+/* Estilos para los botones de las pestañas */
+body.historial-container .nav-tabs .nav-link {
+    background-color: #333 !important;
+    color: #ffffff !important;
+    border: 2px solid #444 !important;
+    border-radius: 8px !important;
+    margin: 0 5px !important;
+    padding: 12px 20px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+body.historial-container .nav-tabs .nav-link:hover {
+    background-color: #f50c18 !important;
+    color: #ffffff !important;
+    border-color: #f50c18 !important;
+    transform: translateY(-2px) !important;
+}
+
+body.historial-container .nav-tabs .nav-link.active {
+    background-color: #eaf822 !important;
+    color: #000 !important;
+    border-color: #eaf822 !important;
+    font-weight: 700 !important;
+}
+
+body.historial-container .nav-tabs .nav-link.active:hover {
+    background-color: #f50c18 !important;
+    color: #ffffff !important;
+    border-color: #f50c18 !important;
+}
+
+/* Filas clicables del historial */
+body.historial-container .clickable-row {
+    transition: background-color 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+body.historial-container .clickable-row:hover {
+    background-color: #444 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(234, 248, 34, 0.2) !important;
+}
+
+body.historial-container .clickable-row td {
+    vertical-align: middle !important;
+}
+
+/* Contenedor de tabla */
+body.historial-container .table-responsive {
+    background-color: transparent !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+/* Tabla principal */
+body.historial-container .table {
+    margin-bottom: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background-color: #222 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+/* Headers de tabla */
+body.historial-container .table thead th {
+    background-color: #eaf822 !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    border: none !important;
+    padding: 15px !important;
+    vertical-align: middle !important;
+}
+
+/* Celdas de tabla */
+body.historial-container .table tbody td {
+    background-color: #333 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    border: 1px solid #444 !important;
+    padding: 15px !important;
+    vertical-align: middle !important;
+}
+
+/* Hover en filas */
+body.historial-container .table tbody tr:hover td {
+    background-color: #404040 !important;
+}
+
+/* Imágenes de posters */
+body.historial-container .poster-img {
+    width: 80px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+    margin-bottom: 10px !important;
+}
+
+/* Imágenes QR */
+body.historial-container .qr-img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    border-radius: 5px !important;
+    transition: transform 0.3s ease !important;
+}
+
+body.historial-container .qr-img:hover {
+    transform: scale(1.1) !important;
+}
+
+/* Badge de monto */
+body.historial-container .monto-badge {
+    background: linear-gradient(45deg, #4cd137, #44bd32) !important;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+}
+
+/* Sin historial */
+body.historial-container .sin-historial {
+    background-color: #222 !important;
+    border-radius: 15px !important;
+    padding: 60px 30px !important;
+    text-align: center !important;
+    margin: 30px 0 !important;
+}
+
+body.historial-container .sin-historial i {
+    font-size: 4rem !important;
+    color: #eaf822 !important;
+    margin-bottom: 20px !important;
+}
+
+body.historial-container .sin-historial h3 {
+    color: #eaf822 !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 15px !important;
+}
+
+body.historial-container .sin-historial p {
+    color: #cccccc !important;
+    font-size: 1.1rem !important;
+}
+
+/* Lista de items */
+body.historial-container .items-list {
+    text-align: left !important;
+    max-width: 200px !important;
+    margin: 0 auto !important;
+}
+
+body.historial-container .item-comprado {
+    background-color: #444 !important;
+    padding: 5px 10px !important;
+    margin: 2px 0 !important;
+    border-radius: 5px !important;
+    font-size: 0.9rem !important;
+}
+
+body.historial-container .item-nombre {
+    color: #eaf822 !important;
+    font-weight: 600 !important;
+}
+
+body.historial-container .item-cantidad {
+    color: #4cd137 !important;
+}
+
+/* Container principal */
+body.historial-container .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+}
+
+/* Override Bootstrap completamente */
+body.historial-container .table-dark {
+    --bs-table-color: #ffffff !important;
+    --bs-table-bg: #333 !important;
+    --bs-table-border-color: #444 !important;
+    --bs-table-striped-bg: #333 !important;
+    --bs-table-striped-color: #ffffff !important;
+    --bs-table-active-bg: #404040 !important;
+    --bs-table-active-color: #ffffff !important;
+    --bs-table-hover-bg: #404040 !important;
+    --bs-table-hover-color: #ffffff !important;
+}
+
+/* Texto muted personalizado */
+body.historial-container .text-muted {
+    color: #888 !important;
+}
+
+/* Tab content */
+body.historial-container .tab-content {
+    background-color: transparent !important;
+}
+
+body.historial-container .tab-pane {
+    background-color: transparent !important;
+}

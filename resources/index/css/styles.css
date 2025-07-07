@@ -1,0 +1,1469 @@
+/* Importar fuente Roboto explícitamente con @font-face */
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.resumen-side-product-left {
+    order: 0;
+}
+.resumen-side-product-right {
+    order: 2;
+}
+.resumen-palomitas-table-wrapper {
+    gap: 24px;
+}
+.resumen-side-product {
+    min-width: 180px;
+    max-width: 220px;
+    background: #fffde9;
+    border-radius: 14px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    padding: 18px 12px 12px 12px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.resumen-img-side {
+    max-height: 80px;
+    max-width: 120px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fffbe7;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    margin-bottom: 8px;
+}
+.resumen-side-desc {
+    font-size: 1.08rem;
+    color: #a07900;
+    margin-bottom: 0;
+}
+.resumen-alimentos-center {
+    background: #fffbe7;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 60px 48px 60px 48px;
+    margin-bottom: 40px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.resumen-palomitas-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+.resumen-palomitas-table {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fffde9;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.resumen-palomitas-table th, .resumen-palomitas-table td {
+    text-align: center;
+    padding: 10px 14px;
+    font-size: 1rem;
+}
+.resumen-palomitas-table th {
+    background: #fff3c1;
+    color: #b48a00;
+    font-weight: 600;
+    border-bottom: 2px solid #ffe066;
+}
+.resumen-palomitas-table td {
+    background: #fff;
+    border-bottom: 1px solid #ffe066;
+}
+.resumen-palomitas-table tr:last-child td {
+    border-bottom: none;
+}
+.resumen-img-table {
+    max-height: 60px;
+    max-width: 60px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fffbe7;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.resumen-titulo-table {
+    font-weight: 600;
+    color: #b48a00;
+    font-size: 1.05rem;
+}
+.resumen-alimentos {
+    background: #fffbe7;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 24px 32px 24px;
+    margin-bottom: 40px;
+}
+.descripcion-alimentos {
+    font-size: 1.15rem;
+    color: #444;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.resumen-palomita {
+    border: 1px solid #f5d06f;
+    border-radius: 14px;
+    background: #fffde9;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s;
+}
+.resumen-palomita:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.resumen-img {
+    max-height: 120px;
+    object-fit: contain;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+.resumen-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #b48a00;
+    margin-bottom: 10px;
+}
+.resumen-tabla th, .resumen-tabla td {
+    font-size: 0.98rem;
+    padding: 4px 10px;
+}
+.resumen-tabla th {
+    background: #fff3c1;
+    color: #b48a00;
+}
+.resumen-pedido-btn {
+    font-size: 1.2rem;
+    padding: 12px 36px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ffe066 60%, #ffd43b 100%);
+    color: #7c5a00;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.2s, color 0.2s;
+}
+.resumen-pedido-btn:hover {
+    background: linear-gradient(90deg, #ffd43b 60%, #ffe066 100%);
+    color: #a07900;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+.pelicula {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+}
+
+.pelicula img {
+    width: 250px;
+    height: 350px;
+    border: 2px solid #33333300;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pelicula img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    border-color: #eaf822;
+}
+
+.contenido {
+    padding: 40px;
+}
+
+.pelicula-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.pelicula:hover .pelicula-overlay {
+    display: flex;
+}
+
+.editar-btn, .eliminar-btn {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+p{
+    color: #000000; 
+    font-size: 18px; 
+    font-weight: bold;
+}
+
+.p-text{
+    color: #ffffff; 
+    font-size: 18px; 
+    font-weight: bold;
+}
+
+.editar-btn {
+    background-color: #007bff;
+}
+
+.eliminar-btn {
+    background-color: #dc3545;
+}
+
+.titulos {
+    font-family: "Roboto", sans-serif;
+    color: #eaf822; 
+}
+
+.form-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 9998;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    border-left: 1px solid #dee2e6;
+    border-top: none;
+}
+
+@media (max-width: 600px) {
+  .form-panel {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+  }
+}
+
+.peliculas-container {
+    transition: padding-right 0.3s ease;
+}
+
+.menu-peliculas-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 16px 0;
+  scroll-behavior: smooth;
+}
+
+.pelicula-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px;
+    color: #eaf822;
+    width: 200px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px 0 0 0;
+    line-height: 1.15;
+}
+
+/* Panel lateral de información de película */
+.overlay-panel-pelicula {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.overlay-panel-pelicula.activo {
+    display: block;
+}
+
+.panel-pelicula {
+    position: fixed;
+    top: 0;
+    right: -750px;
+    width: 750px;
+    height: 100vh;
+    background: #1a1a1a;
+    color: white;
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+
+.panel-pelicula.activo {
+    right: 0;
+}
+
+.panel-pelicula .cerrar-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.panel-pelicula .poster-panel {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.panel-pelicula .contenido-panel {
+    padding: 20px;
+}
+
+.panel-pelicula .titulo-panel {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #eaf822;
+}
+
+.panel-pelicula .info-basica {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.panel-pelicula .sinopsis-panel {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.panel-pelicula .descripcion-panel {
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    text-align: justify;
+    margin: 0;
+    padding: 5px;
+    color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+.color-info{
+    color: #fdfdfd
+}
+
+.panel-pelicula .detalles-panel {
+    margin-bottom: 20px;
+}
+
+.panel-pelicula .detalles-panel strong {
+    color: #eaf822;
+}
+
+.panel-pelicula .trailer-panel {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+
+.panel-pelicula .trailer-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.panel-pelicula .btn-comprar {
+    font-family: "Roboto", sans-serif;
+    background: #eaf822;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.panel-pelicula .btn-comprar:hover {
+    background: #f50c18;
+}
+
+.panel-pelicula .generos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0;
+    padding-top: 5px;
+}
+
+.panel-pelicula .generos span {
+    background: #eaf822;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #000000;
+    border: 1px solid #000000;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.panel-pelicula .categoria {
+    font-weight: bold;
+    color: #eaf822;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.panel-pelicula .generos-panel {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Estilos para clasificaciones de películas */
+.clasificacion-verde {
+    background-color: #2ecc71;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.clasificacion-amarilla {
+    background-color: #f1c40f;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.clasificacion-roja {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.rotate-scale-up-diagonal-left {
+    animation: rotate-scale-up-diagonal-left 0.4s linear both;
+}
+
+@keyframes rotate-scale-up-diagonal-left {
+    0% {
+        transform: scale(1) rotate3d(1,1,0,0deg);
+    }
+    50% {
+        transform: scale(2) rotate3d(1,1,0,-180deg);
+    }
+    100% {
+        transform: scale(1) rotate3d(1,1,0,-360deg);
+    }
+}
+
+/* Estilos para películas clickeables */
+.pelicula {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.pelicula:hover {
+    transform: scale(1.05);
+}
+
+.pelicula:not(.pelicula-admin) {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.pelicula-clickeable:hover::before {
+    opacity: 1;
+}
+
+/* Estilos para la sección destacada */
+.seccion-destacada {
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 600px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.destacada-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.destacada-video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 150%;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    background-color: #000;
+}
+
+.destacada-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100%;
+    width: 100vw;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(1.2);
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.destacada-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.destacada-contenido {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 70px 10% 0 10%;
+    z-index: 3;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.destacada-info {
+    max-width: 60%;
+    color: white;
+    text-align: left;
+}
+
+.destacada-etiqueta {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.estrella {
+    color: #ffc107;
+    margin-right: 5px;
+}
+
+.destacada-titulo {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.destacada-botones {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-destacada {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: "Roboto", sans-serif;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-comprar-destacada {
+    background-color: #eaf822;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.btn-comprar-destacada:hover {
+    background-color: #f50c18;
+    color: white;
+}
+
+.btn-trailer {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-trailer:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.destacada-poster {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.destacada-poster img {
+    max-height: 400px;
+    max-width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.destacada-poster img:hover {
+    transform: scale(1.02);
+}
+
+
+
+.seccion-principal {
+    padding-top: 20px;
+}
+
+/* Cuando hay sección destacada, necesitamos más espacio */
+.seccion-principal.con-destacada {
+    padding-top: 520px;
+}
+
+/* Cuando hay panel de admin, menos espacio */
+.seccion-principal.con-admin {
+    padding-top: 20px;
+}
+
+/* Cuando hay panel de empleado, menos espacio */
+.seccion-principal.con-empleado {
+    padding-top: 20px;
+}
+
+@media (max-width: 992px) {
+    .destacada-contenido {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 90px;
+    }
+    
+    .destacada-info {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .destacada-poster {
+        padding: 0;
+    }
+    
+    .destacada-botones {
+        justify-content: center;
+    }
+    
+    .destacada-titulo {
+        font-size: 32px;
+    }
+    
+    .destacada-poster img {
+        max-height: 300px;
+    }
+    
+    .seccion-destacada {
+        height: 700px;
+    }
+    
+    .seccion-principal {
+        padding-top: 700px;
+    }
+}
+
+@media (max-width: 576px) {
+    .destacada-botones {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .destacada-titulo {
+        font-size: 24px;
+    }
+    
+    .destacada-poster img {
+        max-height: 200px;
+    }
+    
+    .destacada-contenido {
+        padding-top: 80px;
+    }
+    
+    .seccion-destacada {
+        height: 600px;
+    }
+    
+    .seccion-principal {
+        padding-top: 600px;
+    }
+}
+
+/* Estilos para modales de películas - Diseño consistente */
+.modal-content {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+}
+
+.modal-header {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #eaf822;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+}
+
+.modal-header h5 {
+    color: #eaf822;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.modal-header .btn-close {
+    background-color: #dc3545;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    filter: none;
+}
+
+.modal-header .btn-close:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+.modal-body {
+    background-color: #1a1a1a;
+    padding: 25px;
+}
+
+.modal-footer {
+    background-color: #2a2a2a;
+    border-top: 1px solid #eaf822;
+    border-radius: 0 0 12px 12px;
+    padding: 20px;
+}
+
+/* Estilos para formularios dentro de modales */
+.modal .form-label {
+    color: #eaf822;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.modal .form-control,
+.modal .form-select {
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus {
+    background-color: #333;
+    border-color: #eaf822;
+    box-shadow: 0 0 0 0.2rem rgba(234, 248, 34, 0.25);
+    color: #ffffff;
+}
+
+.modal .form-control::placeholder {
+    color: #999;
+}
+
+.modal .form-select option {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+/* Estilos para botones dentro de modales */
+.modal .btn {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.modal .btn-primary {
+    background-color: #eaf822;
+    color: #000000;
+    border: 2px solid #eaf822;
+}
+
+.modal .btn-primary:hover {
+    background-color: #d4e61f;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 248, 34, 0.3);
+}
+
+.modal .btn-success {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.modal .btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.modal .btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.modal .btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.modal .btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.modal .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.modal .btn-outline-secondary {
+    background-color: transparent;
+    color: #eaf822;
+    border: 2px solid #eaf822;
+}
+
+.modal .btn-outline-secondary:hover {
+    background-color: #eaf822;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+/* Estilos para elementos específicos de los modales */
+.modal textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal .d-flex.gap-2 {
+    gap: 12px !important;
+}
+
+.modal .mb-3 {
+    margin-bottom: 20px !important;
+}
+
+/* Estilos para contenedores de géneros y actores */
+.modal #generosSeleccionados,
+.modal #generosSeleccionadosProximo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.modal #generosSeleccionados .badge,
+.modal #generosSeleccionadosProximo .badge {
+    background-color: #eaf822;
+    color: #000000;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Estilos adicionales para badges de géneros en modales */
+.modal .badge {
+    background-color: #eaf822 !important;
+    color: #000000 !important;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal .badge span {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.modal .badge span:hover {
+    color: #dc3545;
+}
+
+.modal #actoresContainer input,
+.modal #actoresContainerProximo input {
+    margin-bottom: 10px;
+}
+
+/* Estilos para preview de posters */
+.modal #posterPreviewContainer,
+.modal #posterPreviewContainerProximo {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.modal #posterPreviewContainer img,
+.modal #posterPreviewContainerProximo img {
+    max-width: 200px;
+    max-height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Overlay del modal */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Animaciones */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+/* Responsivo para modales */
+@media (max-width: 768px) {
+    .modal-dialog {
+        margin: 10px;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px;
+    }
+    
+    .modal .d-flex.gap-2 {
+        flex-direction: column;
+    }
+    
+    .modal .d-flex.gap-2 .form-select {
+        width: 100%;
+    }
+}
+
+/* Panel de Administración */
+.panel-admin {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card-admin {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.card-admin:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-admin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+}
+
+.card-usuarios::before {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.card-comida::before {
+    background: linear-gradient(45deg, #e67e22, #d35400);
+}
+
+.card-sala::before {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+}
+
+.card-totales::before {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+}
+
+.card-admin-body {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-admin-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.card-usuarios .card-admin-icon {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+.card-comida .card-admin-icon {
+    background: linear-gradient(45deg, #e67e22, #d35400);
+}
+
+.card-sala .card-admin-icon {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+}
+
+.card-totales .card-admin-icon {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+}
+
+.card-admin-info {
+    flex: 1;
+}
+
+.card-admin-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    line-height: 1;
+}
+
+.card-admin-title {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Panel de Empleados */
+.panel-empleado {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card-empleado {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.card-empleado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card-empleado::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.card-salas::before {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.card-horarios::before {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+.card-alimentos::before {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+.card-empleado-body {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-empleado-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.card-salas .card-empleado-icon {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.card-horarios .card-empleado-icon {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+.card-alimentos .card-empleado-icon {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+.card-empleado-info {
+    flex: 1;
+}
+
+.card-empleado-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    line-height: 1;
+}
+
+.card-empleado-title {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive para el panel de empleados */
+@media (max-width: 768px) {
+    .panel-empleado {
+        padding: 20px 10px;
+    }
+    
+    .card-empleado-body {
+        padding: 20px;
+        gap: 12px;
+    }
+    
+    .card-empleado-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .card-empleado-number {
+        font-size: 1.5rem;
+    }
+    
+    .card-empleado-title {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .panel-empleado .row {
+        gap: 12px;
+    }
+    
+    .card-empleado-body {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .card-empleado-number {
+        font-size: 1.8rem;
+    }
+}
+
+/* Estilos para la cabecera de cartelera con botones de admin */
+.cartelera-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.cartelera-info {
+    flex: 1;
+}
+
+.cartelera-botones {
+    display: flex;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.btn-admin-action {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Roboto", sans-serif;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    justify-content: center;
+}
+
+.btn-agregar {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #ffffff;
+}
+
+.btn-agregar:hover {
+    background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.btn-proximo {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: #000000;
+}
+
+.btn-proximo:hover {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    color: #000000;
+}
+
+.btn-admin-action i {
+    font-size: 1rem;
+}
+
+/* Responsive para la cabecera de cartelera */
+@media (max-width: 992px) {
+    .cartelera-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .cartelera-botones {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .btn-admin-action {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 576px) {
+    .cartelera-botones {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-admin-action {
+        min-width: 100%;
+        justify-content: center;
+    }
+}

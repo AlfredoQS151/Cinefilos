@@ -1,0 +1,499 @@
+/* Estilos para comprar entradas */
+.body-comprar {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.peliculas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pelicula-card {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.pelicula-header {
+    display: flex;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+.pelicula-poster {
+    width: 120px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-right: 20px;
+}
+
+.pelicula-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pelicula-info {
+    flex: 1;
+}
+
+.pelicula-titulo {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+}
+
+.pelicula-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.clasificacion-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.clasificacion-a, .clasificacion-aa {
+    background-color: #4cd137;
+    color: white;
+}
+
+.clasificacion-b, .clasificacion-b15 {
+    background-color: #fbc531;
+    color: #333;
+}
+
+.clasificacion-c, .clasificacion-d {
+    background-color: #e84118;
+    color: white;
+}
+
+.duracion {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.etiqueta-estreno {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* Estilo para etiqueta "En Cartelera" */
+.en-cartelera {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4cd137;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para los horarios */
+.horarios-container {
+    background-color: #222;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 0 0px 20px;
+    gap: 6px;
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+.horario-btn {
+    font-family: "Roboto", sans-serif;
+    background: #eaf822;
+    color: #000000;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 3px;
+    display: inline-block;
+    min-width: 75px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.horario-btn:hover {
+    background-color: #f50c18;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.horario-icon {
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+/* Estilos para películas sin funciones */
+.sin-funciones {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+}
+
+/* Estilo para el encabezado de la sección */
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.seccion-titulo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+/* Panel lateral de información de película */
+.overlay-panel-pelicula {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.overlay-panel-pelicula.activo {
+    display: block;
+}
+
+.panel-pelicula {
+    font-family: "Roboto", sans-serif;
+    position: fixed;
+    top: 0;
+    right: -750px;
+    width: 750px;
+    height: 100vh;
+    background: #1a1a1a;
+    color: white;
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+
+.panel-pelicula.abierto {
+    right: 0;
+}
+
+.cerrar-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.contenido-panel {
+    font-family: "Roboto", sans-serif;
+    padding: 20px;
+}
+
+.titulo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.titulo-panel {
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    color: #ffffff;
+}
+
+.trailer-panel {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+
+.trailer-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.sinopsis-panel {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.descripcion-panel {
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    text-align: justify;
+    margin: 0;
+    padding: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+.info-basica {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.generos-panel {
+    font-family: "Roboto", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+      
+.generos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0;
+    padding-top: 5px;
+}
+
+.generos span {
+    background: #eaf822;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #000000;
+    border: 1px solid #000000;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.color-info {
+    color: #fdfdfd
+}
+
+.categoria {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: #eaf822;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 18px;
+}
+
+/* Estilos para clasificaciones de películas */
+.clasificacion-verde {
+    background-color: #2ecc71;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.clasificacion-amarilla {
+    background-color: #f1c40f;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.clasificacion-roja {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #000000;
+    display: inline-block;
+    text-align: center;
+}
+
+.idioma-texto {
+    color: #eaf822;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.idioma-texto .idioma-label {
+    font-weight: 700;
+}
+
+/* Estilos para el enlace "Ver detalles" */
+.ver-detalle {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.ver-detalle:hover {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+/* Estilos para el encabezado de día */
+.dia-header {
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 0;
+    text-align: left;
+    border-bottom: 3px solid #eaf822;
+    width: 100%;
+    display: block;
+}
+
+.dia-fecha {
+    background-color: #222;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    display: block;
+    padding: 6px 20px;
+    line-height: 1;
+}
+
+/* Estilos para el contenedor del trailer */
+
+.trailer-video {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.trailer-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .pelicula-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .pelicula-poster {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .horario-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .trailer-container {
+        flex: 1;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
+    .trailer-video {
+        height: 180px;
+    }
+}

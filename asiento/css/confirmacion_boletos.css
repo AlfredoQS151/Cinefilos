@@ -1,0 +1,66 @@
+/* Estilos específicos para la confirmación de boletos */
+.movie-details {
+    background-color: #3c3c3c;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 4px solid #eaf822;
+}
+
+.movie-poster {
+    text-align: center;
+    padding: 20px;
+}
+
+.poster-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #eaf822;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.seats-info {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.seats-info .seat-number {
+    display: inline-block;
+    background-color: #eaf822;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.ticket-summary {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.ticket-summary h5 {
+    color: #eaf822;
+    margin-bottom: 15px;
+}
+
+.function-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+    .function-info {
+        grid-template-columns: 1fr;
+    }
+}

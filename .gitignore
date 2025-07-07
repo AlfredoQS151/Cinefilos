@@ -1,0 +1,25 @@
+# Archivos que no deben subirse a Render
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.production
+
+# Archivos de backup locales
+*.sql
+*.backup
+
+# Archivos temporales
+tmp/
+temp/
+cache/
+
+# Archivos de configuración local
+config_local.php
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,35 @@
+/* Estilos para mensajes de error de validación */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-control.error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Estilos para alertas de Bootstrap */
+.alert {
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid #28a745;
+    color: #ffffff;
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid #dc3545;
+    color: #ffffff;
+}
+
+.alert .btn-close {
+    filter: invert(1);
+}
