@@ -1,4 +1,4 @@
-[⚠️ Suspicious Content] <?php
+<?php
 // Configuración para desarrollo local y producción en Render
 
 // Detectar si estamos en Render (producción) - mejorado
