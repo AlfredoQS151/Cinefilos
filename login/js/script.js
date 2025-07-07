@@ -63,6 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
         if (apellidoInput) validarSoloLetras(apellidoInput);
         if (telefonoInput) validarTelefono(telefonoInput);
         
+        // Validación en tiempo real de contraseñas
+        const contrasenaInput = document.querySelector('input[name="contrasena"]');
+        const repiteContrasenaInput = document.querySelector('input[name="repite_contrasena"]');
+        
+        function validarCoincidenciaContrasenas() {
+            if (contrasenaInput && repiteContrasenaInput) {
+                if (repiteContrasenaInput.value && contrasenaInput.value !== repiteContrasenaInput.value) {
+                    repiteContrasenaInput.style.borderColor = '#ff0000';
+                    repiteContrasenaInput.style.boxShadow = '0 0 5px rgba(255,0,0,0.3)';
+                } else if (repiteContrasenaInput.value && contrasenaInput.value === repiteContrasenaInput.value) {
+                    repiteContrasenaInput.style.borderColor = '#00ff00';
+                    repiteContrasenaInput.style.boxShadow = '0 0 5px rgba(0,255,0,0.3)';
+                } else {
+                    repiteContrasenaInput.style.borderColor = '';
+                    repiteContrasenaInput.style.boxShadow = '';
+                }
+            }
+        }
+        
+        if (contrasenaInput) {
+            contrasenaInput.addEventListener('input', validarCoincidenciaContrasenas);
+        }
+        if (repiteContrasenaInput) {
+            repiteContrasenaInput.addEventListener('input', validarCoincidenciaContrasenas);
+        }
+        
         // Validación adicional al enviar el formulario
         registroForm.addEventListener('submit', function(e) {
             let errores = [];
@@ -92,10 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 errores.push('El teléfono debe tener exactamente 10 dígitos');
             }
             
+            // Validar contraseñas
+            if (contrasenaInput && contrasenaInput.value.trim() === '') {
+                errores.push('La contraseña es requerida');
+            }
+            
+            if (repiteContrasenaInput && repiteContrasenaInput.value.trim() === '') {
+                errores.push('Debe repetir la contraseña');
+            }
+            
             // Validar que las contraseñas coincidan
-            if (contrasenaInput && repiteContrasenaInput) {
+            if (contrasenaInput && repiteContrasenaInput && 
+                contrasenaInput.value.trim() !== '' && repiteContrasenaInput.value.trim() !== '') {
                 if (contrasenaInput.value !== repiteContrasenaInput.value) {
                     errores.push('Las contraseñas no coinciden');
+                    repiteContrasenaInput.style.borderColor = '#ff0000';
+                    repiteContrasenaInput.style.boxShadow = '0 0 5px rgba(255,0,0,0.3)';
                 }
             }
             
