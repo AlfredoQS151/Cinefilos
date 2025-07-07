@@ -66,37 +66,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Validación adicional al enviar el formulario
         registroForm.addEventListener('submit', function(e) {
             let errores = [];
-
+            
             // Validar nombre
             if (nombreInput && nombreInput.value.trim() === '') {
                 errores.push('El nombre es requerido');
             } else if (nombreInput && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombreInput.value)) {
                 errores.push('El nombre solo puede contener letras');
             }
-
+            
             // Validar apellido
             if (apellidoInput && apellidoInput.value.trim() === '') {
                 errores.push('El apellido es requerido');
             } else if (apellidoInput && !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(apellidoInput.value)) {
                 errores.push('El apellido solo puede contener letras');
             }
-
+            
             // Validar teléfono
             if (telefonoInput && telefonoInput.value.trim() === '') {
                 errores.push('El teléfono es requerido');
             } else if (telefonoInput && telefonoInput.value.length !== 10) {
                 errores.push('El teléfono debe tener exactamente 10 dígitos');
             }
-
-            // Validar que las contraseñas coincidan (si existen los campos)
-            const passwordInput = document.querySelector('input[name="contrasena"]');
-            const repetirPasswordInput = document.querySelector('input[name="repetir_contrasena"]');
-            if (passwordInput && repetirPasswordInput) {
-                if (passwordInput.value !== repetirPasswordInput.value) {
-                    errores.push('Las contraseñas no coinciden');
-                }
-            }
-
+            
             // Si hay errores, prevenir envío y mostrar mensajes
             if (errores.length > 0) {
                 e.preventDefault();
