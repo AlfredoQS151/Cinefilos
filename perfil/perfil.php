@@ -1,3 +1,29 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include '../conexion/conexion.php';
+
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: ../login/login.php");
+    exit();
+}
+
+// Verificar que sea un usuario normal (no admin ni empleado)
+if ($_SESSION['rol'] !== 'normal') {
+    header("Location: ../index.php");
+    exit();
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+$mensaje = '';
+$tipo_mensaje = '';
+
+// Procesar edición del perfil
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    try {
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,39 +31,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil - Cinéfilos</title>
     <link rel="icon" type="image/png" href="../resources/index/img/logo.png">
-    
     <!-- Fuentes y CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="../resources/header/css/styles.css">
-
 </head>
 <body>
-    <?php
-    session_start();
-    include '../conexion/conexion.php';
-    
-    // Verificar si el usuario está logueado
-    if (!isset($_SESSION['usuario_id'])) {
-        header("Location: ../login/login.php");
-        exit();
-    }
-    
-    // Verificar que sea un usuario normal (no admin ni empleado)
-    if ($_SESSION['rol'] !== 'normal') {
-        header("Location: ../index.php");
-        exit();
-    }
-    
-    $usuario_id = $_SESSION['usuario_id'];
-    $mensaje = '';
-    $tipo_mensaje = '';
-    
-    // Procesar edición del perfil
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        try {
             $nombre = trim($_POST['nombre']);
             $apellido = trim($_POST['apellido']);
             $correo = trim($_POST['correo']);
