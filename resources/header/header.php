@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav>
         <div class="nav-left">
             <div class="logo">
-                <a href="/Cinefilos/index.php">
+                <a href="../index.php">
                     <img src="../resources/index/img/logo.png" alt="Cinéfilos" class="logo-img">
                 </a>
             </div>
@@ -35,18 +35,18 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="menu">
             <?php if (isset($_SESSION['rol'])): ?>
                 <?php if ($_SESSION['rol'] === 'admin'): ?>
-                    <a href="/Cinefilos/index.php">Cartelera</a>
-                    <a href="/Cinefilos/empleados/empleados.php">Empleados</a>
+                    <a href="../index.php">Cartelera</a>
+                    <a href="../empleados/empleados.php">Empleados</a>
                 <?php elseif ($_SESSION['rol'] === 'medium'): ?>
-                    <a href="/Cinefilos/index.php">Cartelera</a>
-                    <a href="/Cinefilos/horarios/editar_horarios.php">Editar Horarios</a>
+                    <a href="../index.php">Cartelera</a>
+                    <a href="../horarios/editar_horarios.php">Editar Horarios</a>
                     <a href="/Cinefilos/alimentos/alimentos.php">Alimentos</a>
                 <?php else: ?>
-                    <a href="/Cinefilos/index.php">Inicio</a>
-                    <a href="/Cinefilos/most_alimentos/mostrar_alimentos.php">Alimentos</a>
-                    <a href="/Cinefilos/comprar/comprar_entradas.php">Comprar Entradas</a>
-                    <a href="/Cinefilos/historial_pagos_entradas/historial.php">Historial de Compras</a>
-                    <a href="/Cinefilos/perfil/perfil.php">Mi perfil</a>
+                    <a href="../index.php">Inicio</a>
+                    <a href="../most_alimentos/mostrar_alimentos.php">Alimentos</a>
+                    <a href="../comprar/comprar_entradas.php">Comprar Entradas</a>
+                    <a href="../historial_pagos_entradas/historial.php">Historial de Compras</a>
+                    <a href="../perfil/perfil.php">Mi perfil</a>
                 <?php endif; ?>
                 <a href="/Cinefilos/login/logout.php" class="logout-link">Cerrar Sesión</a>
             <?php else: ?>
