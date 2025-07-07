@@ -21,94 +21,69 @@ $mensaje = '';
 $tipo_mensaje = '';
 
 // Procesar edición del perfil
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil - Cinéfilos</title>
-    <link rel="icon" type="image/png" href="../resources/index/img/logo.png">
-    <!-- Fuentes y CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="../resources/header/css/styles.css">
-</head>
-<body>
-            $nombre = trim($_POST['nombre']);
-            $apellido = trim($_POST['apellido']);
-            $correo = trim($_POST['correo']);
-            $telefono = trim($_POST['telefono']);
-            $fecha_nacimiento = $_POST['fecha_nacimiento'];
-            $sexo = $_POST['sexo'];
-            $nueva_contrasena = trim($_POST['nueva_contrasena']);
-            $confirmar_contrasena = trim($_POST['confirmar_contrasena']);
-            
-            // Validaciones
-            if (empty($nombre) || empty($apellido) || empty($correo) || empty($telefono)) {
-                throw new Exception("Todos los campos son obligatorios.");
-            }
-            
-            if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-                throw new Exception("El correo electrónico no es válido.");
-            }
-            
-            // Validar edad
-            $fecha_nac = new DateTime($fecha_nacimiento);
-            $hoy = new DateTime();
-            $edad = $hoy->diff($fecha_nac)->y;
-            
-            if ($edad < 18) {
-                throw new Exception("Debes ser mayor de 18 años.");
-            }
-            
-            // Validar contraseña si se está cambiando
-            if (!empty($nueva_contrasena)) {
-                if ($nueva_contrasena !== $confirmar_contrasena) {
-                    throw new Exception("Las contraseñas no coinciden.");
-                }
-                
-                if (strlen($nueva_contrasena) < 8) {
-                    throw new Exception("La contraseña debe tener al menos 8 caracteres.");
-                }
-            }
-            
-            // Verificar si el correo ya existe (excluyendo el usuario actual)
-            $stmt = $pdo->prepare("SELECT COUNT(*) FROM usuarios_normales WHERE correo = ? AND id != ?");
-            $stmt->execute([$correo, $usuario_id]);
-            
-            if ($stmt->fetchColumn() > 0) {
-                throw new Exception("El correo electrónico ya está en uso por otro usuario.");
-            }
-            
-            // Actualizar datos
-            if (!empty($nueva_contrasena)) {
-                $contrasena_hash = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("UPDATE usuarios_normales SET nombre = ?, apellido = ?, correo = ?, telefono = ?, fecha_nacimiento = ?, sexo = ?, contrasena = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $correo, $telefono, $fecha_nacimiento, $sexo, $contrasena_hash, $usuario_id]);
-            } else {
-                $stmt = $pdo->prepare("UPDATE usuarios_normales SET nombre = ?, apellido = ?, correo = ?, telefono = ?, fecha_nacimiento = ?, sexo = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $correo, $telefono, $fecha_nacimiento, $sexo, $usuario_id]);
-            }
-            
-            // Actualizar sesión
-            $_SESSION['nombre'] = $nombre;
-            
-            $mensaje = "Perfil actualizado correctamente.";
-            $tipo_mensaje = 'success';
-            
-        } catch (Exception $e) {
-            $mensaje = $e->getMessage();
-            $tipo_mensaje = 'error';
-        } catch (PDOException $e) {
-            $mensaje = "Error al actualizar el perfil: " . $e->getMessage();
-            $tipo_mensaje = 'error';
+        $nombre = trim($_POST['nombre']);
+        $apellido = trim($_POST['apellido']);
+        $correo = trim($_POST['correo']);
+        $telefono = trim($_POST['telefono']);
+        $fecha_nacimiento = $_POST['fecha_nacimiento'];
+        $sexo = $_POST['sexo'];
+        $nueva_contrasena = trim($_POST['nueva_contrasena']);
+        $confirmar_contrasena = trim($_POST['confirmar_contrasena']);
+        // Validaciones
+        if (empty($nombre) || empty($apellido) || empty($correo) || empty($telefono)) {
+            throw new Exception("Todos los campos son obligatorios.");
         }
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("El correo electrónico no es válido.");
+        }
+        // Validar edad
+        $fecha_nac = new DateTime($fecha_nacimiento);
+        $hoy = new DateTime();
+        $edad = $hoy->diff($fecha_nac)->y;
+        if ($edad < 18) {
+            throw new Exception("Debes ser mayor de 18 años.");
+        }
+        // Validar contraseña si se está cambiando
+        if (!empty($nueva_contrasena)) {
+            if ($nueva_contrasena !== $confirmar_contrasena) {
+                throw new Exception("Las contraseñas no coinciden.");
+            }
+            if (strlen($nueva_contrasena) < 8) {
+                throw new Exception("La contraseña debe tener al menos 8 caracteres.");
+            }
+        }
+        // Verificar si el correo ya existe (excluyendo el usuario actual)
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM usuarios_normales WHERE correo = ? AND id != ?");
+        $stmt->execute([$correo, $usuario_id]);
+        if ($stmt->fetchColumn() > 0) {
+            throw new Exception("El correo electrónico ya está en uso por otro usuario.");
+        }
+        // Actualizar datos
+        if (!empty($nueva_contrasena)) {
+            $contrasena_hash = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("UPDATE usuarios_normales SET nombre = ?, apellido = ?, correo = ?, telefono = ?, fecha_nacimiento = ?, sexo = ?, contrasena = ? WHERE id = ?");
+            $stmt->execute([$nombre, $apellido, $correo, $telefono, $fecha_nacimiento, $sexo, $contrasena_hash, $usuario_id]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE usuarios_normales SET nombre = ?, apellido = ?, correo = ?, telefono = ?, fecha_nacimiento = ?, sexo = ? WHERE id = ?");
+            $stmt->execute([$nombre, $apellido, $correo, $telefono, $fecha_nacimiento, $sexo, $usuario_id]);
+        }
+        // Actualizar sesión
+        $_SESSION['nombre'] = $nombre;
+        $mensaje = "Perfil actualizado correctamente.";
+        $tipo_mensaje = 'success';
+    } catch (Exception $e) {
+        $mensaje = $e->getMessage();
+        $tipo_mensaje = 'error';
+    } catch (PDOException $e) {
+        $mensaje = "Error al actualizar el perfil: " . $e->getMessage();
+        $tipo_mensaje = 'error';
     }
+}
+
+// ...existing code...
     
     try {
         // Obtener datos del usuario

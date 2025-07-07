@@ -1,7 +1,10 @@
+
 <?php
+// Siempre iniciar la sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-}?>
+}
+?>
 
 <link rel="stylesheet" href="../resources/header/css/styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </a>
             </div>
 
-            <?php if (isset($_SESSION['usuario_id'])): ?>
+            <?php if (isset($_SESSION['usuario_id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])): ?>
                 <div class="welcome-container">
                     <span class="welcome-message">
                         <?php
