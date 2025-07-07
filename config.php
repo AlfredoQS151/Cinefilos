@@ -1,6 +1,18 @@
 <?php
 // Configuración para desarrollo local y producción en Render
 
+// Configurar sesiones de manera más robusta
+if (session_status() === PHP_SESSION_NONE) {
+    // Configurar parámetros de sesión
+    ini_set('session.cookie_lifetime', 0);
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_strict_mode', 1);
+    ini_set('session.cookie_samesite', 'Lax');
+    
+    // Iniciar sesión
+    session_start();
+}
+
 // Detectar si estamos en Render (producción) - mejorado
 $is_production = isset($_ENV['DATABASE_URL']) || 
                  isset($_SERVER['DATABASE_URL']) || 

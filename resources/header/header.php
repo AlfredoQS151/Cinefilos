@@ -1,17 +1,19 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}?>
+// Incluir configuración de rutas
+include_once __DIR__ . '/header_config.php';
 
-<link rel="stylesheet" href="resources/header/css/styles.css">
+// No necesitamos iniciar sesión aquí ya que config.php la maneja
+?>
+
+<link rel="stylesheet" href="<?php echo $routes['header_css']; ?>">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 <header>
     <nav>
         <div class="nav-left">
             <div class="logo">
-                <a href="/index.php">
-                    <img src="/resources/index/img/logo.png" alt="Cinéfilos" class="logo-img">
+                <a href="<?php echo $routes['index']; ?>">
+                    <img src="<?php echo $routes['logo']; ?>" alt="Cinéfilos" class="logo-img">
                 </a>
             </div>
 
@@ -35,25 +37,25 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="menu">
             <?php if (isset($_SESSION['rol'])): ?>
                 <?php if ($_SESSION['rol'] === 'admin'): ?>
-                    <a href="/index.php">Cartelera</a>
-                    <a href="/empleados/empleados.php">Empleados</a>
+                    <a href="<?php echo $routes['index']; ?>">Cartelera</a>
+                    <a href="<?php echo $routes['empleados']; ?>">Empleados</a>
                 <?php elseif ($_SESSION['rol'] === 'medium'): ?>
-                    <a href="/index.php">Cartelera</a>
-                    <a href="/horarios/editar_horarios.php">Editar Horarios</a>
-                    <a href="/alimentos/alimentos.php">Alimentos</a>
+                    <a href="<?php echo $routes['index']; ?>">Cartelera</a>
+                    <a href="<?php echo $routes['horarios']; ?>">Editar Horarios</a>
+                    <a href="<?php echo $routes['alimentos']; ?>">Alimentos</a>
                 <?php else: ?>
-                    <a href="/index.php">Inicio</a>
-                    <a href="/most_alimentos/mostrar_alimentos.php">Alimentos</a>
-                    <a href="/comprar/comprar_entradas.php">Comprar Entradas</a>
-                    <a href="/historial_pagos_entradas/historial.php">Historial de Compras</a>
-                    <a href="/perfil/perfil.php">Mi perfil</a>
+                    <a href="<?php echo $routes['index']; ?>">Inicio</a>
+                    <a href="<?php echo $routes['mostrar_alimentos']; ?>">Alimentos</a>
+                    <a href="<?php echo $routes['comprar']; ?>">Comprar Entradas</a>
+                    <a href="<?php echo $routes['historial']; ?>">Historial de Compras</a>
+                    <a href="<?php echo $routes['perfil']; ?>">Mi perfil</a>
                 <?php endif; ?>
-                <a href="/login/logout.php" class="logout-link">Cerrar Sesión</a>
+                <a href="<?php echo $routes['logout']; ?>" class="logout-link">Cerrar Sesión</a>
             <?php else: ?>
-                <a href="/index.php">Inicio</a>
-                <a href="/most_alimentos/mostrar_alimentos.php">Alimentos</a>
-                <a href="/comprar/comprar_entradas.php">Comprar Entradas</a>
-                <a href="/login/login.php">Iniciar Sesión</a>
+                <a href="<?php echo $routes['index']; ?>">Inicio</a>
+                <a href="<?php echo $routes['mostrar_alimentos']; ?>">Alimentos</a>
+                <a href="<?php echo $routes['comprar']; ?>">Comprar Entradas</a>
+                <a href="<?php echo $routes['login']; ?>">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
     </nav>
