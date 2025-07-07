@@ -20,13 +20,15 @@ include '../resources/header/header.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+
+<?php
 try {
     $stmt = $pdo->prepare("SELECT id, nombre, apellido, fecha_nacimiento, correo FROM usuarios_medium ORDER BY id");
     $stmt->execute();
     $usuarios_medium = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $usuarios_medium = [];
-    echo "<p>Error al obtener usuarios: " . htmlspecialchars($e->getMessage()) . "</p>";
+    $error_usuarios_medium = $e->getMessage();
 }
 ?>
 
