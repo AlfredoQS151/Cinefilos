@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
         registroForm.addEventListener('submit', function(e) {
             let errores = [];
             
+            // Obtener campos de contraseña
+            const contrasenaInput = document.querySelector('input[name="contrasena"]');
+            const repiteContrasenaInput = document.querySelector('input[name="repite_contrasena"]');
+            
             // Validar nombre
             if (nombreInput && nombreInput.value.trim() === '') {
                 errores.push('El nombre es requerido');
@@ -86,6 +90,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 errores.push('El teléfono es requerido');
             } else if (telefonoInput && telefonoInput.value.length !== 10) {
                 errores.push('El teléfono debe tener exactamente 10 dígitos');
+            }
+            
+            // Validar que las contraseñas coincidan
+            if (contrasenaInput && repiteContrasenaInput) {
+                if (contrasenaInput.value !== repiteContrasenaInput.value) {
+                    errores.push('Las contraseñas no coinciden');
+                }
             }
             
             // Si hay errores, prevenir envío y mostrar mensajes
