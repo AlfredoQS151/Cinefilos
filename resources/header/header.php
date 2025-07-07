@@ -1,6 +1,6 @@
 
 <?php
-// Siempre iniciar la sesión si no está iniciada
+// ¡NO debe haber ningún espacio ni salto de línea antes de esta etiqueta PHP!
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
