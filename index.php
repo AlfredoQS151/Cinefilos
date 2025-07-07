@@ -1,21 +1,10 @@
 
+
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 include 'conexion/conexion.php';
-include 'resources/header/header.php';
-?>
-<title>Cinéfilos</title>
-<link rel="icon" type="image/png" href="resources/index/img/logo.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" href="resources/index/css/styles.css">
-
-
-<?php
 // Seleccionar una película destacada (la más reciente por ID) para todos excepto admin y empleados
 $pelicula_destacada = null;
 if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'] !== 'medium')) {
@@ -23,6 +12,20 @@ if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'
     $pelicula_destacada = $stmtDestacada->fetch(PDO::FETCH_ASSOC);
 }
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinéfilos</title>
+    <link rel="icon" type="image/png" href="resources/index/img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="resources/index/css/styles.css">
+</head>
+<body style="background-color: #1a1a1a">
+<?php include 'resources/header/header.php'; ?>
 
 <?php if ($pelicula_destacada): ?>
 <!-- Sección Destacada -->

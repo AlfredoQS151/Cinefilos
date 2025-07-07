@@ -130,7 +130,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     include '../resources/header/header.php';
     ?>
-    
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi Perfil - Cinéfilos</title>
+        <link rel="icon" type="image/png" href="../resources/index/img/logo.png">
+        <!-- Fuentes y CSS globales -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
     <div class="contenido">
         <div class="perfil-header perfil-contenido">
             <h1 class="perfil-titulo">Mi Perfil</h1>
