@@ -50,10 +50,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php endif; ?>
                 <a href="/Cinefilos/login/logout.php" class="logout-link">Cerrar Sesión</a>
             <?php else: ?>
-                <a href="/Cinefilos/index.php">Inicio</a>
-                <a href="/Cinefilos/most_alimentos/mostrar_alimentos.php">Alimentos</a>
-                <a href="/Cinefilos/comprar/comprar_entradas.php">Comprar Entradas</a>
-                <a href="/Cinefilos/login/login.php">Iniciar Sesión</a>
+                <a href="../index.php">Inicio</a>
+                <a href="../most_alimentos/mostrar_alimentos.php">Alimentos</a>
+                <a href="../comprar/comprar_entradas.php">Comprar Entradas</a>
+                <a href="../login/login.php">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
     </nav>
