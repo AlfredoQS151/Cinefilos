@@ -54,7 +54,7 @@ require_once '../resources/header/header.php';
                     <input type="hidden" name="asientos[]" value="<?= htmlspecialchars($a) ?>">
                 <?php endforeach; ?>
                 <input type="hidden" name="total" value="<?= htmlspecialchars($total) ?>">
-            <?php endif; ?>>
+            <?php endif; ?>
 
             <label>🔢 Número de Tarjeta</label>
             <input type="text" id="card-number" name="card-number" maxlength="19" placeholder="1234 5678 9012 3456" required>

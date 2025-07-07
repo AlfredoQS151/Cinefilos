@@ -1,5 +1,3 @@
-<title>Comprar Entradas</title>
-
 <?php
 include '../conexion/conexion.php';
 include '../resources/header/header.php';
@@ -15,6 +13,7 @@ $mesES = [
     9=>'Septiembre',10=>'Octubre',11=>'Noviembre',12=>'Diciembre'
 ];
 ?>
+<title>Comprar Entradas</title>
 <link rel="icon" type="image/png" href="../resources/index/img/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../resources/header/css/styles.css">
