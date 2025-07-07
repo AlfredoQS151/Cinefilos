@@ -2,10 +2,7 @@
 <link rel="icon" type="image/png" href="resources/index/img/logo.png">
 
 <?php
-// Incluir la configuración unificada (ya maneja sesiones)
-include_once 'config.php';
-
-// Incluir el header
+include 'conexion/conexion.php';
 include 'resources/header/header.php';
 ?>
 
