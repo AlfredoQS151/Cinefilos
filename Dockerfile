@@ -1,10 +1,15 @@
 # Usar imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
-# Instalar extensiones de PHP necesarias para PostgreSQL
+
+# Instalar extensiones de PHP necesarias para PostgreSQL y GD (para generación de imágenes)
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_pgsql gd
 
 # Habilitar mod_rewrite para Apache
 RUN a2enmod rewrite
