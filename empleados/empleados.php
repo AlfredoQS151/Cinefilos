@@ -1,25 +1,24 @@
+<?php
+session_start();
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+include '../conexion/conexion.php'; 
+include '../resources/header/header.php';
+?>
 <!DOCTYPE html>
-<html lang="<link rel="stylesheet" href="../resources/header/css/styles.css">
-<link rel="stylesheet" href="../resources/index/css/styles.css">
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet")
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Empleados</title>
     <link rel="icon" type="image/png" href="../resources/index/img/logo.png">
-
-<?php
-session_start();
-
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: ../login.php");
-    exit();
-}
-
-include '../conexion/conexion.php'; 
-include '../resources/header/header.php';
+    <link rel="stylesheet" href="../resources/header/css/styles.css">
+    <link rel="stylesheet" href="../resources/index/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 try {
     $stmt = $pdo->prepare("SELECT id, nombre, apellido, fecha_nacimiento, correo FROM usuarios_medium ORDER BY id");
