@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="nav-left">
             <div class="logo">
                 <a href="/Cinefilos/index.php">
-                    <img src="/Cinefilos/resources/index/img/logo.png" alt="Cinéfilos" class="logo-img">
+                    <img src="../resources/index/img/logo.png" alt="Cinéfilos" class="logo-img">
                 </a>
             </div>
 
