@@ -1,10 +1,13 @@
-<title>Cinéfilos</title>
-<link rel="icon" type="image/png" href="resources/index/img/logo.png">
 
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include 'conexion/conexion.php';
 include 'resources/header/header.php';
 ?>
+<title>Cinéfilos</title>
+<link rel="icon" type="image/png" href="resources/index/img/logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
