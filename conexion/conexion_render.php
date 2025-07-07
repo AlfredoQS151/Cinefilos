@@ -1,22 +1,17 @@
 <?php
 // Configuración de base de datos para desarrollo y producción
+
+// Solo configuración para producción (Render)
 if (isset($_ENV['DATABASE_URL']) || isset($_SERVER['DATABASE_URL'])) {
-    // Configuración para producción (Render)
     $database_url = $_ENV['DATABASE_URL'] ?? $_SERVER['DATABASE_URL'];
     $parsed_url = parse_url($database_url);
-    
     $host = $parsed_url['host'];
     $port = isset($parsed_url['port']) ? $parsed_url['port'] : 5432;
     $dbname = ltrim($parsed_url['path'], '/');
     $user = $parsed_url['user'];
     $password = $parsed_url['pass'];
 } else {
-    // Configuración para desarrollo (local)
-    $host = "localhost";
-    $port = "5432";
-    $dbname = "cinefilos";
-    $user = "postgres";
-    $password = "admin";
+    die("Error: Solo se permite conexión a la base de datos en la nube (Render) en este entorno.");
 }
 
 try {
