@@ -12,7 +12,6 @@ include '../resources/header/header.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../resources/header/css/styles.css">
     <link rel="stylesheet" href="../resources/index/css/styles.css">
-    <script src="js/script.js"></script>
 </head>
 <body class="body-login">
 <div class="container" id="container">
@@ -122,5 +121,6 @@ include '../resources/header/header.php';
         </div>
     </div>
 </div>
+<script src="js/script.js"></script>
 </body>
 </html>
