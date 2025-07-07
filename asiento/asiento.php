@@ -77,19 +77,20 @@ $libres          = $total_asientos - count($ocupadas);
             <h3 class="titulo"><?= htmlspecialchars($funcion['titulo']) ?></h3>
             <p class="mb-1" style="color: #fff;"><strong class="categorias">Sala:</strong> <?= $funcion['numero_sala'] ?></p>
             <?php
-                setlocale(LC_TIME,'es_ES.UTF-8');
-                $fecha = strftime('%d de %B', strtotime($funcion['fecha']));
-                $año = date('Y', strtotime($funcion['fecha']));
-                // Traducir el mes a español
+                // Nueva forma sin strftime (compatible PHP 8.1+)
+                $dt = DateTime::createFromFormat('Y-m-d', $funcion['fecha']);
                 $meses = [
                     'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo',
                     'April' => 'Abril', 'May' => 'Mayo', 'June' => 'Junio',
                     'July' => 'Julio', 'August' => 'Agosto', 'September' => 'Septiembre',
                     'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre'
                 ];
-                $fecha_es = str_replace(array_keys($meses), array_values($meses), $fecha);
-                $fecha_completa = str_replace(' de ', ' del ', $fecha_es) . ' del ' . $año;
-                
+                $dia = $dt->format('d');
+                $mes_en = $dt->format('F');
+                $mes_es = $meses[$mes_en] ?? $mes_en;
+                $año = $dt->format('Y');
+                $fecha_completa = $dia . ' del ' . $mes_es . ' del ' . $año;
+
                 // Convertir hora a formato 12 horas
                 $hora_24 = substr($funcion['hora_inicio'], 0, 5);
                 $hora_obj = DateTime::createFromFormat('H:i', $hora_24);
