@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 4000);
     }
 
-    // Validaciones del formulario
+    // Validaciones del formulario de REGISTRO
     const registroForm = document.getElementById('registroForm');
     
     if (registroForm) {
@@ -207,5 +207,105 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } else {
         console.error('No se encontró el formulario de registro');
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // VALIDACIONES PARA EL FORMULARIO DE LOGIN (Seguridad contra SQL Injection)
+    // ══════════════════════════════════════════════════════════════════
+    
+    const loginForm = document.querySelector('form[action="../conexion/login.php"]');
+    
+    if (loginForm) {
+        console.log('Formulario de login encontrado');
+        
+        const loginCorreoInput = loginForm.querySelector('input[name="correo"]');
+        const loginContrasenaInput = loginForm.querySelector('input[name="contrasena"]');
+        
+        // Función para detectar patrones sospechosos de inyección SQL
+        function detectarInyeccionSQL(valor) {
+            const patronesPeligrosos = [
+                /('|(\\)|(;)|(--)|(\s(or|and)\s)|(union\s+select)|(drop\s+table)|(insert\s+into)|(delete\s+from)|(update\s+set))/i,
+                /(script\s*>)|(javascript:)|(vbscript:)|(onload\s*=)|(onerror\s*=)/i,
+                /(<\s*script)|(alert\s*\()|(eval\s*\()|(document\.)/i
+            ];
+            
+            return patronesPeligrosos.some(patron => patron.test(valor));
+        }
+        
+        // Función para limpiar entrada de caracteres peligrosos
+        function limpiarEntrada(valor) {
+            return valor
+                .replace(/[<>\"'\\]/g, '') // Remover caracteres HTML y comillas
+                .replace(/(\s(or|and|union|select|drop|insert|delete|update|script)\s)/gi, '') // Remover palabras SQL peligrosas
+                .trim();
+        }
+        
+        // Validación en tiempo real para el correo de login
+        if (loginCorreoInput) {
+            loginCorreoInput.addEventListener('input', function(e) {
+                let valor = e.target.value;
+                
+                if (detectarInyeccionSQL(valor)) {
+                    e.target.value = limpiarEntrada(valor);
+                    e.target.style.borderColor = '#ff6b6b';
+                    e.target.style.boxShadow = '0 0 5px rgba(255,107,107,0.3)';
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+        }
+        
+        // Validación en tiempo real para la contraseña de login
+        if (loginContrasenaInput) {
+            loginContrasenaInput.addEventListener('input', function(e) {
+                let valor = e.target.value;
+                
+                if (detectarInyeccionSQL(valor)) {
+                    e.target.value = limpiarEntrada(valor);
+                    e.target.style.borderColor = '#ff6b6b';
+                    e.target.style.boxShadow = '0 0 5px rgba(255,107,107,0.3)';
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+        }
+        
+        // Validación al enviar el formulario de login
+        loginForm.addEventListener('submit', function(e) {
+            console.log('Enviando formulario de login...');
+            let errores = [];
+            
+            // Validar correo
+            if (!loginCorreoInput || loginCorreoInput.value.trim() === '') {
+                errores.push('El correo es requerido');
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginCorreoInput.value)) {
+                errores.push('El formato del correo no es válido');
+            } else if (detectarInyeccionSQL(loginCorreoInput.value)) {
+                errores.push('El correo contiene caracteres no permitidos');
+            }
+            
+            // Validar contraseña
+            if (!loginContrasenaInput || loginContrasenaInput.value.trim() === '') {
+                errores.push('La contraseña es requerida');
+            } else if (detectarInyeccionSQL(loginContrasenaInput.value)) {
+                errores.push('La contraseña contiene caracteres no permitidos');
+            } else if (loginContrasenaInput.value.length < 3) {
+                errores.push('La contraseña debe tener al menos 3 caracteres');
+            }
+            
+            // Si hay errores, prevenir envío
+            if (errores.length > 0) {
+                e.preventDefault();
+                console.log('Errores en login:', errores);
+                alert('Error de seguridad:\n• ' + errores.join('\n• '));
+                return false;
+            }
+            
+            console.log('Formulario de login válido, enviando...');
+        });
+    } else {
+        console.error('No se encontró el formulario de login');
     }
 });
