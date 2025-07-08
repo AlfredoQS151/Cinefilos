@@ -100,18 +100,58 @@ document.addEventListener('DOMContentLoaded', function() {
         validarSoloLetras(apellidoInput);
         validarTelefono(telefonoInput);
         
-        // Eventos para validar contraseñas
+        // Eventos para validar contraseñas y ocultar mensajes al corregir
         if (contrasenaInput) {
-            contrasenaInput.addEventListener('input', validarContrasenas);
+            contrasenaInput.addEventListener('input', function() {
+                validarContrasenas();
+                ocultarMensajes(); // Ocultar mensajes al empezar a corregir
+            });
         }
         if (repiteContrasenaInput) {
-            repiteContrasenaInput.addEventListener('input', validarContrasenas);
+            repiteContrasenaInput.addEventListener('input', function() {
+                validarContrasenas();
+                ocultarMensajes(); // Ocultar mensajes al empezar a corregir
+            });
+        }
+        
+        // Ocultar mensajes al corregir otros campos también
+        [nombreInput, apellidoInput, telefonoInput].forEach(input => {
+            if (input) {
+                input.addEventListener('input', ocultarMensajes);
+            }
+        });
+        
+        // Función para mostrar mensajes de error
+        function mostrarMensajes(errores) {
+            const contenedorMensajes = document.getElementById('mensajesError');
+            if (contenedorMensajes) {
+                if (errores.length > 0) {
+                    contenedorMensajes.innerHTML = '<strong>Por favor corrige los siguientes errores:</strong><br>• ' + errores.join('<br>• ');
+                    contenedorMensajes.style.display = 'block';
+                    
+                    // Hacer scroll hasta el mensaje de error
+                    contenedorMensajes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    contenedorMensajes.style.display = 'none';
+                }
+            }
+        }
+        
+        // Función para ocultar mensajes de error
+        function ocultarMensajes() {
+            const contenedorMensajes = document.getElementById('mensajesError');
+            if (contenedorMensajes) {
+                contenedorMensajes.style.display = 'none';
+            }
         }
         
         // Validación al enviar el formulario
         registroForm.addEventListener('submit', function(e) {
             console.log('Enviando formulario...');
             let errores = [];
+            
+            // Ocultar mensajes previos
+            ocultarMensajes();
             
             // Validar nombre
             if (!nombreInput || nombreInput.value.trim() === '') {
@@ -152,8 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     repiteContrasenaInput.style.borderColor = '#dc3545';
                     repiteContrasenaInput.style.boxShadow = '0 0 5px rgba(220, 53, 69, 0.3)';
                     console.log('Error: Las contraseñas no coinciden');
-                    console.log('Contraseña 1:', contrasenaInput.value);
-                    console.log('Contraseña 2:', repiteContrasenaInput.value);
                 }
             }
             
@@ -161,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (errores.length > 0) {
                 e.preventDefault();
                 console.log('Errores encontrados:', errores);
-                alert('Por favor corrige los siguientes errores:\n\n• ' + errores.join('\n• '));
+                mostrarMensajes(errores);
                 return false;
             }
             

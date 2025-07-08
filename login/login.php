@@ -67,6 +67,10 @@ include '../resources/header/header.php';
             </div>
 
             <br>
+            <!-- Contenedor para mensajes de error -->
+            <div id="mensajesError" style="display: none; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px 20px; border-radius: 10px; margin: 10px 0; font-size: 14px; font-family: 'Roboto', sans-serif;">
+            </div>
+            
             <button type="submit">Registrarse</button>
             <?php if (isset($_GET['error'])): ?>
                 <p style="color:red; margin-top:10px;">Error: el correo ya está registrado. Intenta con otro.</p>
