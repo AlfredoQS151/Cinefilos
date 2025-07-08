@@ -208,10 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('No se encontró el formulario de registro');
     }
-
-    // ══════════════════════════════════════════════════════════════════
-    // VALIDACIONES PARA EL FORMULARIO DE LOGIN (Seguridad contra SQL Injection)
-    // ══════════════════════════════════════════════════════════════════
     
     const loginForm = document.querySelector('form[action="../conexion/login.php"]');
     

@@ -69,4 +69,71 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (!valid) e.preventDefault();
     });
+
+    // Función para detectar patrones sospechosos de inyección SQL
+    function detectarInyeccionSQL(valor) {
+        const patronesPeligrosos = [
+            /('|(\\)|(;)|(--)|(\s(or|and)\s)|(union\s+select)|(drop\s+table)|(insert\s+into)|(delete\s+from)|(update\s+set))/i,
+            /(script\s*>)|(javascript:)|(vbscript:)|(onload\s*=)|(onerror\s*=)/i,
+            /(<\s*script)|(alert\s*\()|(eval\s*\()|(document\.)/i,
+            /(select\s+.*\s+from)|(union\s+all)|(exec\s*\()|(xp_)/i
+        ];
+        
+        return patronesPeligrosos.some(patron => patron.test(valor));
+    }
+    
+    // Función para limpiar entrada de caracteres peligrosos
+    function limpiarEntrada(valor) {
+        return valor
+            .replace(/[<>\"'\\]/g, '') // Remover caracteres HTML y comillas
+            .replace(/(\s(or|and|union|select|drop|insert|delete|update|script)\s)/gi, '') // Remover palabras SQL peligrosas
+            .trim();
+    }
+    
+    // Aplicar validación de seguridad a todos los campos de texto
+    const camposTexto = [cardHolder];
+    
+    camposTexto.forEach(campo => {
+        if (campo) {
+            campo.addEventListener('input', function(e) {
+                let valor = e.target.value;
+                
+                if (detectarInyeccionSQL(valor)) {
+                    e.target.value = limpiarEntrada(valor);
+                    e.target.style.borderColor = '#ff6b6b';
+                    e.target.style.boxShadow = '0 0 5px rgba(255,107,107,0.3)';
+                    
+                    // Mostrar mensaje de advertencia
+                    const errorDiv = e.target.nextElementSibling;
+                    if (errorDiv && errorDiv.classList.contains('error-message')) {
+                        errorDiv.textContent = 'Caracteres no permitidos detectados';
+                        errorDiv.style.color = '#ff6b6b';
+                    }
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+        }
+    });
+    
+    // Validación adicional en el envío del formulario
+    const formularioOriginal = form.addEventListener;
+    form.addEventListener('submit', function(e) {
+        let erroresSeguridad = [];
+        
+        // Verificar todos los campos de texto
+        [cardHolder].forEach(campo => {
+            if (campo && detectarInyeccionSQL(campo.value)) {
+                erroresSeguridad.push('El campo "' + campo.placeholder + '" contiene caracteres no permitidos');
+            }
+        });
+        
+        // Si hay errores de seguridad, prevenir envío
+        if (erroresSeguridad.length > 0) {
+            e.preventDefault();
+            alert('Error de seguridad detectado:\n• ' + erroresSeguridad.join('\n• '));
+            return false;
+        }
+    });
 });
