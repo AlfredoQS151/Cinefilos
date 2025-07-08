@@ -208,7 +208,7 @@ $alimentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <input type="hidden" id="eliminar_id" name="id">
                     <div class="modal-body">
                         <p>¿Estás seguro de que deseas eliminar el alimento <strong id="eliminar_nombre_mostrar"></strong>?</p>
-                        <p class="text-muted">Esta acción no se puede deshacer.</p>
+                        <p style="color: #fffff">Esta acción no se puede deshacer.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

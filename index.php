@@ -7,7 +7,7 @@ include 'conexion/conexion.php';
 // Seleccionar una película destacada (la más reciente por ID) para todos excepto admin y empleados
 $pelicula_destacada = null;
 if (!isset($_SESSION['rol']) || ($_SESSION['rol'] !== 'admin' && $_SESSION['rol'] !== 'medium')) {
-    $stmtDestacada = $pdo->query("SELECT * FROM peliculas ORDER BY id DESC LIMIT 1");
+    $stmtDestacada = $pdo->query("SELECT * FROM peliculas ORDER BY fecha_estreno DESC LIMIT 1");
     $pelicula_destacada = $stmtDestacada->fetch(PDO::FETCH_ASSOC);
 }
 ?>
