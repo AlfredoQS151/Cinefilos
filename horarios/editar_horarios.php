@@ -54,7 +54,15 @@ $salas      = $pdo->query("SELECT numero_sala FROM salas ORDER BY numero_sala")-
                             <div class="pelicula-contenido">
                                 <div class="pelicula-info">
                                     <h4 class="pelicula-titulo"><?= htmlspecialchars($p['titulo']) ?></h4>
-                                    <p style="margin: 5px 0; font-size: 14px;"><span style="color: #eaf822; font-weight: 500;">Duración:</span> <span style="color: #ffffff;"><?= htmlspecialchars($p['duracion']) ?></span></p>
+                                    <p style="margin: 5px 0; font-size: 14px; font-family: 'Roboto', sans-serif;"><span style="color: #eaf822; font-weight: 500;">Duración:</span> <span style="color: #ffffff;">
+                                        <?php 
+                                        // Formatear duración desde minutos a horas y minutos
+                                        $duracion_total = (int)$p['duracion'];
+                                        $horas = floor($duracion_total / 60);
+                                        $minutos = $duracion_total % 60;
+                                        echo $horas . "h " . $minutos . "min";
+                                        ?>
+                                    </span></p>
                                     <p class="pelicula-descripcion">Configura los horarios de esta película</p>
                                 </div>
                                 <div class="pelicula-poster">
