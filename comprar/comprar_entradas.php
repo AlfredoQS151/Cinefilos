@@ -111,7 +111,7 @@ $mesES = [
 
                 <?php if (!$funciones): ?>
                     <div class="sin-funciones">
-                        <p style="color: #fffff">Sin funciones disponibles</p>
+                        <p class="sin-funciones">Sin funciones disponibles</p>
                     </div>
                 <?php else: ?>
                     <div class="pelicula-card-divider">

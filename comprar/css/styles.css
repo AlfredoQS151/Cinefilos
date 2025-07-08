@@ -470,6 +470,10 @@
     border: none;
 }
 
+.sin-funciones{
+    color: #ffffff;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
     .pelicula-header {
