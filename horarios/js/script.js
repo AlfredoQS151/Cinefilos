@@ -1,4 +1,4 @@
-/* ---------- Abrir panel para crear horario ---------- */
+/* ---------- Abrir modal para crear horario ---------- */
 document.querySelectorAll('.btnEditar').forEach(btn => {
     btn.addEventListener('click', e => {
         const { id, titulo } = e.target.dataset;
@@ -9,19 +9,16 @@ document.querySelectorAll('.btnEditar').forEach(btn => {
         // limpiar campos
         ['inputSala','inputFecha','inputHoraInicio','inputHoraFin']
             .forEach(idc => { const el = document.getElementById(idc); if (el) el.value = ''; });
-
-        document.getElementById('formHorarioContainer').style.display = 'block';
     });
 });
 
 
-/* ---------- Ver horarios ---------- */
+/* ---------- Ver horarios en modal ---------- */
 document.querySelectorAll('.btnVerHorarios').forEach(btn => {
     btn.addEventListener('click', () => {
         const { id: peliculaId, titulo } = btn.dataset;
 
         document.getElementById('horarioTitulo').innerText = titulo;
-        document.getElementById('panelHorarios').style.display = 'block';
 
         fetch(`../conexion/horarios/get_horario.php?pelicula_id=${peliculaId}`)
             .then(r => r.json())
@@ -79,16 +76,6 @@ document.querySelectorAll('.btnVerHorarios').forEach(btn => {
             });
     });
 });
-
-
-/* ---------- Cerrar paneles ---------- */
-document.getElementById('btnCerrarHorario')
-        .addEventListener('click', () =>
-            document.getElementById('formHorarioContainer').style.display = 'none');
-
-document.getElementById('btnCerrarListaHorarios')
-        .addEventListener('click', () =>
-            document.getElementById('panelHorarios').style.display = 'none');
 
 
 /* ---------- Ocultar alertas automáticas ---------- */

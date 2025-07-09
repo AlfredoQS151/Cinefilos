@@ -86,12 +86,16 @@ $salas      = $pdo->query("SELECT numero_sala FROM salas ORDER BY numero_sala")-
                             <div class="pelicula-acciones">
                                 <button class="btn btn-warning btn-editar-horario btnEditar"
                                         data-id="<?= $p['id'] ?>"
-                                        data-titulo="<?= htmlspecialchars($p['titulo']) ?>">
+                                        data-titulo="<?= htmlspecialchars($p['titulo']) ?>"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalFormHorario">
                                     <i class="fas fa-clock"></i> Editar Horario
                                 </button>
                                 <button class="btn btn-info btn-ver-horarios btnVerHorarios"
                                         data-id="<?= $p['id'] ?>"
-                                        data-titulo="<?= htmlspecialchars($p['titulo']) ?>">
+                                        data-titulo="<?= htmlspecialchars($p['titulo']) ?>"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalVerHorarios">
                                     <i class="fas fa-calendar-alt"></i> Ver Horarios
                                 </button>
                             </div>
@@ -101,75 +105,87 @@ $salas      = $pdo->query("SELECT numero_sala FROM salas ORDER BY numero_sala")-
             <?php endif; ?>
         </div>
 
-        <!-- ──────────────── Panel: crear / editar horario ──────────────── -->
-        <div id="formHorarioContainer" class="form-container" style="display:none;">
-            <div class="form-header">
-                <h5 class="form-title">
-                    <i class="fas fa-clock"></i> Asignar horario a <span id="peliculaNombre"></span>
-                </h5>
+        <!-- Modal para crear/editar horario -->
+        <div class="modal fade" id="modalFormHorario" tabindex="-1" aria-labelledby="modalFormHorarioLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalFormHorarioLabel">
+                            <i class="fas fa-clock"></i> Asignar horario a <span id="peliculaNombre"></span>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formHorario" method="POST" action="../conexion/horarios/guardar_horario.php">
+                            <input type="hidden" name="pelicula_id" id="inputPelId">
+
+                            <div class="form-grid">
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-door-open"></i> Sala
+                                    </label>
+                                    <select name="numero_sala" id="inputSala" class="form-select" required>
+                                        <option value="">Seleccione una sala...</option>
+                                        <?php foreach ($salas as $s): ?>
+                                            <option value="<?= $s ?>">Sala <?= $s ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-calendar"></i> Fecha
+                                    </label>
+                                    <input type="date" class="form-control" name="fecha" id="inputFecha" required>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-play"></i> Hora de inicio
+                                    </label>
+                                    <input type="time" name="hora_inicio" id="inputHoraInicio" class="form-control" required>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-stop"></i> Hora de fin
+                                    </label>
+                                    <input type="time" name="hora_fin" id="inputHoraFin" class="form-control" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formHorario" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Horario
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <form id="formHorario" method="POST" action="../conexion/horarios/guardar_horario.php">
-                <input type="hidden" name="pelicula_id" id="inputPelId">
-
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-door-open"></i> Sala
-                        </label>
-                        <select name="numero_sala" id="inputSala" class="form-select" required>
-                            <option value="">Seleccione una sala...</option>
-                            <?php foreach ($salas as $s): ?>
-                                <option value="<?= $s ?>">Sala <?= $s ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-calendar"></i> Fecha
-                        </label>
-                        <input type="date" class="form-control" name="fecha" id="inputFecha" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-play"></i> Hora de inicio
-                        </label>
-                        <input type="time" name="hora_inicio" id="inputHoraInicio" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-stop"></i> Hora de fin
-                        </label>
-                        <input type="time" name="hora_fin" id="inputHoraFin" class="form-control" required>
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Guardar Horario
-                    </button>
-                    <button type="button" id="btnCerrarHorario" class="btn btn-secondary">
-                        <i class="fas fa-times"></i> Cancelar
-                    </button>
-                </div>
-            </form>
         </div>
 
-        <!-- ──────────────── Panel: lista de horarios ──────────────── -->
-        <div id="panelHorarios" class="horarios-panel" style="display:none;">
-            <div class="panel-header">
-                <h5 class="panel-title">
-                    <i class="fas fa-calendar-alt"></i> Horarios de <span id="horarioTitulo"></span>
-                </h5>
-            </div>
-            <div id="listaHorarios" class="horarios-lista"></div>
-            <div class="panel-actions">
-                <button id="btnCerrarListaHorarios" class="btn btn-secondary">
-                    <i class="fas fa-times"></i> Cerrar
-                </button>
+        <!-- Modal para ver horarios -->
+        <div class="modal fade" id="modalVerHorarios" tabindex="-1" aria-labelledby="modalVerHorariosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalVerHorariosLabel">
+                            <i class="fas fa-calendar-alt"></i> Horarios de <span id="horarioTitulo"></span>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="listaHorarios" class="horarios-lista"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times"></i> Cerrar
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
