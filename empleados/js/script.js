@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btnAgregarUsuario = document.getElementById('btnAgregarUsuario');
-    const formContainer = document.getElementById('formUsuarioContainer');
+    const modalFormEmpleado = new bootstrap.Modal(document.getElementById('modalFormEmpleado'));
     const formUsuario = document.getElementById('formUsuario');
-    const btnCancelar = document.getElementById('btnCancelar');
-    const btnCerrar = document.getElementById('btnCerrar');
+    const tituloModal = document.getElementById('tituloModal');
 
     const inputId = document.getElementById('inputId');
     const inputNombre = document.getElementById('inputNombre');
@@ -107,14 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
         inputId.value = '';
         inputPassword.required = true;
         inputPassword.placeholder = '';
+        tituloModal.textContent = 'Agregar Nuevo Empleado';
         formUsuario.action = '../conexion/empleados/insertar.php';
-        formContainer.style.display = 'block';
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-    btnCancelar.addEventListener('click', () => {
-        formContainer.style.display = 'none';
-        formUsuario.reset();
         // Limpiar errores
         limpiarError(inputNombre);
         limpiarError(inputApellido);
@@ -122,14 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
         limpiarError(inputPassword);
     });
 
-    btnCerrar.addEventListener('click', () => {
-        formContainer.style.display = 'none';
+    // Event listener para el modal al cerrarse
+    document.getElementById('modalFormEmpleado').addEventListener('hidden.bs.modal', () => {
         formUsuario.reset();
         // Limpiar errores
         limpiarError(inputNombre);
         limpiarError(inputApellido);
         limpiarError(inputFechaNacimiento);
         limpiarError(inputPassword);
+        // Limpiar backdrops
+        const backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(bd => bd.remove());
     });
 
     // Validación en tiempo real
@@ -192,9 +188,13 @@ document.addEventListener('DOMContentLoaded', () => {
             inputPassword.required = false;
             inputPassword.placeholder = 'Dejar vacío para no cambiar contraseña';
             inputPassword.value = '';
+            tituloModal.textContent = 'Editar Empleado';
             formUsuario.action = '../conexion/empleados/editar.php';
-            formContainer.style.display = 'block';
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            // Limpiar errores
+            limpiarError(inputNombre);
+            limpiarError(inputApellido);
+            limpiarError(inputFechaNacimiento);
+            limpiarError(inputPassword);
         });
     });
 

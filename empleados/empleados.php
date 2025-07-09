@@ -19,6 +19,7 @@ include '../resources/header/header.php';
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 
 <?php
@@ -238,6 +239,12 @@ try {
     display: block;
 }
 
+.form-label i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
 .form-control {
     background-color: #333;
     border: 1px solid #555;
@@ -329,12 +336,22 @@ try {
     color: #eaf822;
 }
 
+.modal-title i {
+    margin-right: 10px;
+}
+
 .btn-close {
     filter: invert(1);
 }
 
 .modal-footer {
     border-top: 1px solid #333;
+}
+
+.modal-body .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 /* Responsivo */
@@ -443,7 +460,7 @@ try {
                         <td><?= htmlspecialchars($usuario['fecha_nacimiento']) ?></td>
                         <td><?= htmlspecialchars($usuario['correo']) ?></td>
                         <td>
-                            <button class="btn btn-editar btn-sm btnEditar">Editar</button>
+                            <button class="btn btn-editar btn-sm btnEditar" data-bs-toggle="modal" data-bs-target="#modalFormEmpleado">Editar</button>
                             <button type="button" class="btn btn-eliminar btn-sm btnEliminar" data-id="<?= $usuario['id'] ?>">Eliminar</button>
                         </td>
                     </tr>
@@ -454,51 +471,72 @@ try {
             </div>
             
             <div class="text-center">
-                <button class="btn btn-agregar" id="btnAgregarUsuario">Agregar Nuevo Empleado</button>
+                <button class="btn btn-agregar" data-bs-toggle="modal" data-bs-target="#modalFormEmpleado" id="btnAgregarUsuario">Agregar Nuevo Empleado</button>
             </div>
         </div>
 
-        <div id="formUsuarioContainer" class="form-container" style="display:none;">
-            <div class="form-header">
-                <h2 class="form-title">Formulario de Empleado</h2>
+        <!-- Modal para agregar/editar empleado -->
+        <div class="modal fade" id="modalFormEmpleado" tabindex="-1" aria-labelledby="modalFormEmpleadoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalFormEmpleadoLabel">
+                            <i class="fas fa-user-plus"></i> <span id="tituloModal">Agregar Nuevo Empleado</span>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formUsuario" action="../conexion/empleados/insertar_editar.php" method="POST">
+                            <input type="hidden" name="id" id="inputId" value="">
+                            
+                            <div class="form-grid">
+                                <div class="form-group mb-3">
+                                    <label for="inputNombre" class="form-label">
+                                        <i class="fas fa-user"></i> Nombre
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" id="inputNombre" required>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="inputApellido" class="form-label">
+                                        <i class="fas fa-user"></i> Apellido
+                                    </label>
+                                    <input type="text" class="form-control" name="apellido" id="inputApellido" required>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="inputFechaNacimiento" class="form-label">
+                                        <i class="fas fa-calendar"></i> Fecha de Nacimiento
+                                    </label>
+                                    <input type="date" class="form-control" name="fecha_nacimiento" id="inputFechaNacimiento" required>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="inputCorreo" class="form-label">
+                                        <i class="fas fa-envelope"></i> Correo
+                                    </label>
+                                    <input type="email" class="form-control" name="correo" id="inputCorreo" required>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="inputPassword" class="form-label">
+                                        <i class="fas fa-lock"></i> Contraseña
+                                    </label>
+                                    <input type="password" class="form-control" name="contrasena" id="inputPassword" placeholder="Dejar vacío para no cambiar contraseña en edición">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="formUsuario" class="btn btn-primary" id="btnGuardar">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
             </div>
-            
-            <form id="formUsuario" action="../conexion/empleados/insertar_editar.php" method="POST">
-                <input type="hidden" name="id" id="inputId" value="">
-                
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="inputNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" id="inputNombre" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="inputApellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" name="apellido" id="inputApellido" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="inputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" name="fecha_nacimiento" id="inputFechaNacimiento" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="inputCorreo" class="form-label">Correo</label>
-                        <input type="email" class="form-control" name="correo" id="inputCorreo" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="inputPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="contrasena" id="inputPassword" placeholder="Dejar vacío para no cambiar contraseña en edición">
-                    </div>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelar">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="btnCerrar">Cerrar</button>
-                </div>
-            </form>
         </div>
 
     </div>
